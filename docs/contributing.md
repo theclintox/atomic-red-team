@@ -25,7 +25,7 @@ Atomic Red Team welcomes all types of contributions as long as it is mapped to
 
 ## How to contribute
 ### Fork
-[Fork the atomic-red-team repository in Github](https://github.com/redcanaryco/atomic-red-team/fork), then checkout 
+[Fork the atomic-red-team repository in Github](https://github.com/theclintox/atomic-red-team/fork), then checkout 
 the repository and make a branch for your new test:
 ```bash
 git clone git@github.com/YOUR_GITHUB_ACCOUNT/atomic-red-team

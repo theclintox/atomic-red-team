@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $.get("https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/Indexes/index.yaml", function (data) {
+  $.get("https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/Indexes/index.yaml", function (data) {
     window.atomic_index = jsyaml.safeLoad(data);
   });
 
@@ -38,7 +38,7 @@ roll_the_dice = function () {
           $('.random-test-executor-name').text("Run with " + test.executor.name).fadeIn();
           $('.random-test-executor-steps').text(test.executor.command).fadeIn();
 
-          var link = "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/" +
+          var link = "https://github.com/theclintox/atomic-red-team/blob/master/atomics/" +
             technique.technique.identifier + "/" + technique.technique.identifier + ".md"
           $('.random-test-link').attr('href', link)
           $('.random-test-link').text(link).fadeIn();

@@ -179,7 +179,7 @@ atomic_tests:
     remote_file:
       description: URL of file to copy
       type: Url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt
+      default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/LICENSE.txt
     local_path:
       description: Local path to place file
       type: Path
@@ -200,7 +200,7 @@ atomic_tests:
     remote_file:
       description: URL of file to copy
       type: Url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt
+      default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/LICENSE.txt
     local_path:
       description: Local path to place file
       type: Path
@@ -234,7 +234,7 @@ atomic_tests:
     remote_file:
       description: URL of file to copy
       type: Url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt
+      default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/LICENSE.txt
   executor:
     command: |
       C:\Windows\System32\bitsadmin.exe /transfer #{bits_job_name} /Priority HIGH #{remote_file} #{local_path}
@@ -250,7 +250,7 @@ atomic_tests:
     remote_file:
       description: URL of file to copy
       type: Url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt
+      default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/LICENSE.txt
     destination_path:
       description: Destination path to file
       type: Path

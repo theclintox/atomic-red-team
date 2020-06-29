@@ -34,10 +34,10 @@ CLRVersion                     4.0.30319.42000
 
 <img src="https://www.redcanary.com/wp-content/uploads/image2-25.png" alt="Atomic" width="200"/>
 
-https://github.com/redcanaryco/invoke-atomicredteam
+https://github.com/theclintox/invoke-atomicredteam
 
 ```
-IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1')
+IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/theclintox/invoke-atomicredteam/master/install-atomicredteam.ps1')
 Install-AtomicRedTeam -getAtomics
 ```
 This will install `invoke-atomicredteam` and download `Atomics` folder from Atomic Red Team.
@@ -48,19 +48,19 @@ Note:
 - Disable AV. 
 
 Atomics folder:
-https://github.com/redcanaryco/atomic-red-team/tree/master/atomics
+https://github.com/theclintox/atomic-red-team/tree/master/atomics
 
 ## Before Update
 
 We're going to modify T1086 - BloodHound
 
-https://github.com/redcanaryco/atomic-red-team/tree/23620c707ac1ed89e4207a39488f9214cf3c6e1e/atomics/T1086
+https://github.com/theclintox/atomic-red-team/tree/23620c707ac1ed89e4207a39488f9214cf3c6e1e/atomics/T1086
 
 ## After Update
 
 SharpHound PR
-- https://github.com/redcanaryco/atomic-red-team/pull/955
-- https://github.com/redcanaryco/atomic-red-team/pull/962
+- https://github.com/theclintox/atomic-red-team/pull/955
+- https://github.com/theclintox/atomic-red-team/pull/962
 - Added src dir (removed payloads)
 - Added input arguments
 - Added prereqs

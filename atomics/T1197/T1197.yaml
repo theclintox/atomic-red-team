@@ -12,7 +12,7 @@ atomic_tests:
     remote_file:
       description: Remote file to download
       type: url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md
+      default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1197/T1197.md
     local_file:
       description: Local file path to save downloaded file
       type: path
@@ -36,7 +36,7 @@ atomic_tests:
     remote_file:
       description: Remote file to download
       type: url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md
+      default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1197/T1197.md
     local_file:
       description: Local file path to save downloaded file
       type: path
@@ -70,7 +70,7 @@ atomic_tests:
     remote_file:
       description: Remote file to download
       type: url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md
+      default: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/atomics/T1197/T1197.md
     command_line:
       description: Command line to execute
       type: string

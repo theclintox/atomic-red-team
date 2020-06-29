@@ -9,7 +9,7 @@ class AtomicRedTeam
   ATOMICS_DIRECTORY = "#{File.dirname(File.dirname(__FILE__))}/atomics"
 
   # TODO- should these all be relative URLs?
-  ROOT_GITHUB_URL = "https://github.com/redcanaryco/atomic-red-team"
+  ROOT_GITHUB_URL = "https://github.com/theclintox/atomic-red-team"
   
   #
   # Returns a list of paths that contain Atomic Tests

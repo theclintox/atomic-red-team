@@ -101,7 +101,7 @@ atomic_tests:
       if (Test-Path #{inputfile}) {exit 0} else {exit 1}
     get_prereq_command: |
       New-Item -Type Directory (split-path #{inputfile}) -ErrorAction ignore | Out-Null
-      Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1036.003/bin/T1036.003.exe" -OutFile "#{inputfile}"
+      Invoke-WebRequest "https://github.com/theclintox/atomic-red-team/raw/master/atomics/T1036.003/bin/T1036.003.exe" -OutFile "#{inputfile}"
   executor:
     command: |
       copy #{inputfile} #{outputfile}

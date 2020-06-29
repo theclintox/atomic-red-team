@@ -20,7 +20,7 @@ Prompt for credentials
 
 ## Let's get Remote (execution)
 
-Wiki - https://github.com/redcanaryco/invoke-atomicredteam/wiki/Execute-Atomic-Tests-(Remote)
+Wiki - https://github.com/theclintox/invoke-atomicredteam/wiki/Execute-Atomic-Tests-(Remote)
 
 After you have established the PS session ($sess) you can proceed with test execution as follows.
 

